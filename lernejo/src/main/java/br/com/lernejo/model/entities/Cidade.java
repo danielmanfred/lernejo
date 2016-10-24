@@ -29,7 +29,7 @@ public class Cidade implements Serializable
     private String nome;
 
     @OneToMany
-    @ForeignKey (name = "CidadeEndereco")
+    @ForeignKey (name = "EnderecoCidade")
     private List<Endereco> enderecos;
     
     public Cidade() {}
@@ -50,6 +50,16 @@ public class Cidade implements Serializable
         this.nome = nome;
     }
 
+    public List<Endereco> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
+    }
+
+    
+    
     @Override
     public int hashCode() {
         int hash = 5;

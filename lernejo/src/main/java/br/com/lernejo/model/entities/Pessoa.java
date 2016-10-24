@@ -5,9 +5,12 @@ import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import org.hibernate.annotations.ForeignKey;
@@ -20,30 +23,33 @@ import org.hibernate.annotations.ForeignKey;
 @Table (name = "pessoa")
 public class Pessoa implements Serializable
 {
-    private static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue
     @Column (name = "IDPessoa", nullable = false)
-    private Integer idPessoa;
+    protected Integer idPessoa;
     @Column (name = "Nome", nullable = false, length = 80)
-    private String nome;
+    protected String nome;
     @Column (name = "Email", nullable = false, length = 80)
-    private String email;
+    protected String email;
     @Column (name = "Telefone", nullable = false, length = 14)
-    private String telefone;
+    protected String telefone;
     @Column (name = "CPF", nullable = false, length = 80)
-    private String cpf;
+    protected String cpf;
     @Column (name = "DataDeNascimento", nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataNascimento;
-    @Column (name = "DataDeMatricula", nullable = false)
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataMatricula;
+    protected Date dataNascimento;
+    
+    
+    @OneToOne (mappedBy = "pessoa", fetch = FetchType.LAZY)
+    @ForeignKey (name = "EnderecoPessoa")
+    protected Endereco endereco;
     
     @ManyToOne (optional = false)
     @ForeignKey (name = "PessoaSexo")
-    private Sexo sexo;
+    @JoinColumn (name = "IdSexo", referencedColumnName = "IdSexo")
+    protected Sexo sexo;
 
     public Pessoa() 
     {
@@ -97,14 +103,24 @@ public class Pessoa implements Serializable
         this.dataNascimento = dataNascimento;
     }
 
-    public Date getDataMatricula() {
-        return dataMatricula;
+    public Sexo getSexo() {
+        return sexo;
     }
 
-    public void setDataMatricula(Date dataMatricula) {
-        this.dataMatricula = dataMatricula;
+    public void setSexo(Sexo sexo) {
+        this.sexo = sexo;
     }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    
+    
     @Override
     public int hashCode() {
         int hash = 7;
