@@ -7,7 +7,7 @@ import org.hibernate.service.ServiceRegistryBuilder;
 
 /**
  * Classe que gerencia a conexão com o banco de dados.
- * @author Daniel Tiago e Givanildo
+ * @author Daniel Tiago
  */
 public class HibernateUtil 
 {

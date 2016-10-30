@@ -14,6 +14,7 @@ public class PhaseListenerLernejo implements PhaseListener
     @Override
     public void afterPhase(PhaseEvent fase) 
     {
+        System.out.println("Depois a fase" + fase.getPhaseId());
         if (fase.getPhaseId().equals(PhaseId.RENDER_RESPONSE))
         {
             // Obter a sessão de volta
@@ -40,11 +41,10 @@ public class PhaseListenerLernejo implements PhaseListener
     @Override
     public void beforePhase(PhaseEvent fase) 
     {
-        System.out.println("Anterior a fase" + getPhaseId());
+        System.out.println("Anterior a fase" + fase.getPhaseId());
         // Se estiver tentando restaurar a visão
         if (fase.getPhaseId().equals(PhaseId.RESTORE_VIEW))
         {
-            System.out.println("Anterior a fase" + getPhaseId());
             Session session = HibernateUtil.getSessionFactory().openSession(); // Abre uma sessão do hibernate
             session.beginTransaction(); // Inicia a transação
             FacesContextUtil.setRequestSession(session);

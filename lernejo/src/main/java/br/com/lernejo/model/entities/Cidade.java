@@ -32,7 +32,8 @@ public class Cidade implements Serializable
     @ForeignKey (name = "EnderecoCidade")
     private List<Endereco> enderecos;
     
-    public Cidade() {}
+    public Cidade() 
+    {}
 
     public Integer getIdCidade() {
         return idCidade;

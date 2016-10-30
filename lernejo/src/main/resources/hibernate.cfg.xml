@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!DOCTYPE hibernate-configuration PUBLIC
     "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory name="session">
         <!-- Configurações de conexão com o banco de dados -->
-        <property name = "hibernate.connection.driver_class"> com.mysql.jdbc.Driver </property> <!-- Define o drive de conexão com o banco de dados -->
-        <property name = "hibernate.connection.url"> jdbc:mysql://localhost:3306/lernejo_db?createDatabaseIfNotExist=true </property>
+       <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property><!-- Defino o driver de conexão com o bd -->
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/lernejo_db?createDatabaseIfNotExist=true</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password"></property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
@@ -29,12 +30,12 @@
         <property name="c3p0.idle_test_period">300</property>
         
         <!-- LISTA DE ENTIDADES -->
-        <mapping class="br.com.semeru.model.entities.Cidade"/>        
-        <mapping class="br.com.semeru.model.entities.Endereco"/>      
-        <mapping class="br.com.semeru.model.entities.Professor"/>      
-        <mapping class="br.com.semeru.model.entities.Pessoa"/>               
-        <mapping class="br.com.semeru.model.entities.Sexo"/>
-        <mapping class="br.com.semeru.model.entities.Aluno"/>
+        <mapping class="br.com.lernejo.model.entities.Cidade"/>        
+        <mapping class="br.com.lernejo.model.entities.Endereco"/>      
+        <mapping class="br.com.lernejo.model.entities.Professor"/>      
+        <mapping class="br.com.lernejo.model.entities.Pessoa"/>               
+        <mapping class="br.com.lernejo.model.entities.Sexo"/>
+        <mapping class="br.com.lernejo.model.entities.Aluno"/>
     </session-factory>
-</hibernate-configuration>    
+</hibernate-configuration>  
     
