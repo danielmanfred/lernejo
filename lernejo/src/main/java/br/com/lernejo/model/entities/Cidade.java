@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -23,12 +24,12 @@ public class Cidade implements Serializable
     
     @Id
     @GeneratedValue
-    @Column (name = "IDCidade", nullable = false)
+    @Column (name = "IdCidade", nullable = false)
     private Integer idCidade;
     @Column (name = "nome", nullable = false, length = 50)
     private String nome;
 
-    @OneToMany
+    @OneToMany (mappedBy = "cidade", fetch = FetchType.LAZY)
     @ForeignKey (name = "EnderecoCidade")
     private List<Endereco> enderecos;
     
