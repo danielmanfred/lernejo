@@ -10,6 +10,6 @@ Se trata de um sistema de gestão educacional genérico que qualquer instituto e
 * Maven
 * Spring Security
 * MySQL
-* Apache Tomcat
+Apache Tomcat
 # IDE
 O projeto foi feito no Netbeans.
