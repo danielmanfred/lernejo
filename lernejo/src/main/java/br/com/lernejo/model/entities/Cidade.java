@@ -24,8 +24,8 @@ public class Cidade implements Serializable
     
     @Id
     @GeneratedValue
-    @Column (name = "IdCidade", nullable = false)
-    private Integer idCidade;
+    @Column (name = "IDCidade", nullable = false)
+    public Integer idCidade;
     @Column (name = "nome", nullable = false, length = 50)
     private String nome;
 
