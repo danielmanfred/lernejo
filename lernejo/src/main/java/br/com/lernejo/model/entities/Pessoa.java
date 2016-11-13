@@ -40,7 +40,9 @@ public class Pessoa implements Serializable
     @Column (name = "DataDeNascimento", nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
     protected Date dataNascimento;
-    
+    @Column (name = "DataDeCadastro", nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    protected Date dataCadastro;
     
     @OneToOne (mappedBy = "pessoa", fetch = FetchType.LAZY)
     @ForeignKey (name = "EnderecoPessoa")
@@ -53,6 +55,7 @@ public class Pessoa implements Serializable
 
     public Pessoa() 
     {
+        this.sexo = new Sexo();
     }
 
     public Integer getIdPessoa() {
@@ -117,6 +120,14 @@ public class Pessoa implements Serializable
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public Date getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
     }
 
     

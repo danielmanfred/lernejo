@@ -6,6 +6,7 @@ import br.com.lernejo.model.entities.Endereco;
 import br.com.lernejo.model.entities.Pessoa;
 import br.com.lernejo.util.FacesContextUtil;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -55,8 +56,12 @@ public class MbPessoa implements Serializable
     
     public String addPessoa()
     {
+        Date date = new Date();
         if (pessoa.getIdPessoa() == null || pessoa.getIdPessoa() == 0)
+        {
+            pessoa.setDataCadastro(date);
             insertPessoa();
+        }
         else
             updatePessoa();
         return null;
