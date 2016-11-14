@@ -31,10 +31,7 @@
                                     <f:validator validatorId="emailValidator"/>
                                 </p:inputText>
                                 
-                                <h:outputLabel for="cpf" value="CPF: "/>
-                                <p:inputText id="cpf" value="#{mbPessoa.pessoa.cpf}" required="true" requiredMessage="Campo obrigatório">
-                                    <f:validator validatorId="cpfValidator"/>
-                                </p:inputText>
+                                 
                                 
                                 <h:outputLabel for="dataNascimento" value="Data de Nascimento: "/>
                                 <p:calendar id="dataNascimento" value="#{mbPessoa.pessoa.dataNascimento}" required="true" requiredMessage="Campo obrigatório" locale="pt_BR" navigator="true" effect="explode" pattern="dd/MM/yyyy"/>
@@ -42,12 +39,7 @@
                                 <h:outputLabel for="sexo" value="Sexo: "/>
                                 <p:selectOneMenu id="sexo" value="#{mbPessoa.pessoa.sexo.idSexo}">
                                     <f:selectItems value="#{bbSexo.sexos}" var="sexo" itemValue="#{sexo.idSexo}" itemLabel="#{sexo.descricao}"/>
-                                </p:selectOneMenu>
-                                
-                                 <p:panel>
-                                     <p:commandButton value="Salvar" action="#{mbPessoa.addPessoa}" image="ui-icon ui-icon-disk" update="@form"/>
-                                     <p:commandButton value="Cancelar" actionListener="#{mbPessoa.limpPessoa}" image="ui-icon ui-icon-close" update="@form"/>
-                                </p:panel>
+                                </p:selectOneMenu>    
                             </h:panelGrid>
                         </p:panel>
                     </p:tab>
@@ -55,7 +47,23 @@
                         <p:panel header="Informações básicas do endereço">
                             <p:growl id="msg1" />
                             <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid1">
-
+                                <h:outputLabel for="cidade" value="Cidade: "/>
+                                <p:selectOneMenu id="cidade" value="#{mbPessoa.endereco.cidade.idCidade}">
+                                    <f:selectItems value="#{bbCidade.cidades}" var="cidade" itemValue="#{cidade.idCidade}" itemLabel="#{cidade.nome}"/>
+                                </p:selectOneMenu>
+                                 
+                                <h:outputLabel for="bairro" value="Bairro: "/>
+                                <p:inputText id="bairro" value="#{mbPessoa.endereco.bairro}" onkeyup="this.value = this.value.toUpperCase()"/>
+                                
+                                <h:outputLabel for="cpf" value="CPF: "/>
+                                <p:inputText id="cpf" value="#{mbPessoa.pessoa.cpf}" required="true" requiredMessage="Campo obrigatório">
+                                    <f:validator validatorId="cpfValidator"/>
+                                </p:inputText>
+                                
+                                <p:panel>
+                                     <p:commandButton value="Salvar" action="#{mbPessoa.addPessoa}" image="ui-icon ui-icon-disk" update="@form"/>
+                                     <p:commandButton value="Cancelar" actionListener="#{mbPessoa.limpPessoa}" image="ui-icon ui-icon-close" update="@form"/>
+                                </p:panel>
                             </h:panelGrid>
                         </p:panel>
                     </p:tab>

@@ -14,17 +14,5 @@ import javax.persistence.Temporal;
 @Table (name = "aluno")
 public class Aluno extends Pessoa
 {
-    @Column (name = "DataDeMatricula", nullable = false)
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataMatricula;
-    
-    
-    public Date getDataMatricula() {
-        return dataMatricula;
-    }
-
-    public void setDataMatricula(Date dataMatricula) {
-        this.dataMatricula = dataMatricula;
-    }
 
 }
