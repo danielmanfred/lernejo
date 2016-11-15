@@ -59,7 +59,7 @@
                         <f:setPropertyActionListener target="#{mbPessoa.endereco.cidade.idCidade}" value="#{pessoa.endereco.cidade.idCidade}"/>
                     </p:commandButton>
                     
-                    <p:commandButton value="Cancelar" image="ui-icon ui-icon-close" update="@form" action="#{mbPessoa.limpPessoa}"/>
+                    <p:commandButton value="Cancelar" image="ui-icon ui-icon-close" update="@form" action="#{mbPessoa.limpPessoa()}"/>
                 </p:column>
             </p:dataTable>
         </h:form>
