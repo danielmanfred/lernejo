@@ -17,7 +17,17 @@
     <h:body>
 
         <div id="topo">
-            <a href="http://g1.globo.com/"><div id="logotipo"></div></a>            
+            <a href="http://g1.globo.com/"><div id="logotipo"></div></a>   
+            <div id="logoff">
+                <h:form>
+                    <br/>
+                    <h5><h:outputText value="SEJA BEM VINDO(A) #{bbUsuarioLogado.procuraPessoa().getNome()}!" /></h5>
+                    <br/>
+                    <a href="#{facesContext.externalContext.requestContextPath}/j_spring_security_logout">
+	                <h4>LOGOFF</h4>
+	            </a>
+                </h:form>
+            </div>
         </div> 
 
         <div id="menu"><!-- Menu ########################################## Menu-->
@@ -26,10 +36,10 @@
 
                     <p:submenu label="Cadastros">  
                         <p:menuitem value="Cidades" url="/restrict/cadastrarcidade.faces"/>                        
-                        <p:menuitem value="Pessoas" url="/restrict/cadastrarpessoa.faces"/>                        
+                        <p:menuitem value="Pessoas" action="#{mbPessoa.limpPessoa}" ajax="false"/>                        
                     </p:submenu> 
                     <p:submenu label="Consultas">  
-                         
+                        <p:menuitem value="Pessoas" url="/restrict/consultarpessoas.faces"/>
                     </p:submenu>                                      
                 </p:menubar> 
             </h:form>           

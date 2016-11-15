@@ -24,9 +24,9 @@ public class Cidade implements Serializable
     
     @Id
     @GeneratedValue
-    @Column (name = "IDCidade", nullable = false)
+    @Column (name = "IdCidade", nullable = false)
     public Integer idCidade;
-    @Column (name = "nome", nullable = false, length = 50)
+    @Column (name = "Nome", nullable = false, length = 50)
     private String nome;
 
     @OneToMany (mappedBy = "cidade", fetch = FetchType.LAZY)

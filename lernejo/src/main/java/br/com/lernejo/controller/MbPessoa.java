@@ -1,5 +1,6 @@
 package br.com.lernejo.controller;
 
+import br.com.lernejo.converters.ConverterSHA1;
 import br.com.lernejo.model.dao.HibernateDAO;
 import br.com.lernejo.model.dao.InterfaceDAO;
 import br.com.lernejo.model.entities.Endereco;
@@ -22,6 +23,7 @@ import javax.faces.context.FacesContext;
 public class MbPessoa implements Serializable
 {
    private static final long serialVersionUID = 1L;
+   private String verificaSenha;
    private Pessoa pessoa = new Pessoa();
    private Endereco endereco = new Endereco();
    private List<Pessoa> pessoas;
@@ -51,7 +53,7 @@ public class MbPessoa implements Serializable
     
     public String editPessoa()
     {
-        return "/restric/cadastrarpessoa.faces";
+        return "/restrict/cadastrarpessoa.faces";
     }
     
     public String addPessoa()
@@ -60,7 +62,7 @@ public class MbPessoa implements Serializable
         if (pessoa.getIdPessoa() == null || pessoa.getIdPessoa() == 0)
         {
             pessoa.setDataCadastro(date);
-            insertPessoa();
+            insertPessoa();    
         }
         else
             updatePessoa();
@@ -69,12 +71,19 @@ public class MbPessoa implements Serializable
     
     private void insertPessoa()
     {
-        pessoaDAO().save(pessoa);
-        endereco.setPessoa(pessoa);
-        enderecoDAO().save(endereco);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Inserção realizado corretamente", ""));
+        //pessoa.setSenha(ConverterSHA1.cipher(pessoa.getSenha()));
+        //if (pessoa.getSenha() == null ? verificaSenha == null : pessoa.getSenha().equals(ConverterSHA1.cipher(verificaSenha)))
+        //{
+            pessoa.setPermissao("ROLE_ADMIN");
+            pessoaDAO().save(pessoa);
+            endereco.setPessoa(pessoa);
+            enderecoDAO().save(endereco);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Inserção realizado corretamente", ""));
+        //}
+        //else
+            //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Senhas não conferem", ""));            
     }
-    
+  
     private void updatePessoa()
     {
         pessoaDAO().update(pessoa);
@@ -125,6 +134,14 @@ public class MbPessoa implements Serializable
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    
+
+    public String getVerificaSenha() {
+        return verificaSenha;
+    }
+
+    public void setVerificaSenha(String verificaSenha) {
+        this.verificaSenha = verificaSenha;
+    }
+
     
 }

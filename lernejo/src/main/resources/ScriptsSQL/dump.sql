@@ -17,7 +17,7 @@ CREATE TABLE 'cidade'
 ) ENGINE = innoDB AUTO_INCREMENT = 27 DEFAULT CHARSET = latin1;
 
 -- Preenchimento de dados para a tabela cidade
-INSERT INTO 'cidade'('IdCidade', 'nome') VALUES
+INSERT INTO 'cidade'('IdCidade', 'Nome') VALUES
 (1, 'Natal'),
 (2, 'Macau'),
 (5, 'Mossoró');

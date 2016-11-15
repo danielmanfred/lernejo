@@ -27,7 +27,7 @@ public class Pessoa implements Serializable
     
     @Id
     @GeneratedValue
-    @Column (name = "IDPessoa", nullable = false)
+    @Column (name = "IdPessoa", nullable = false)
     protected Integer idPessoa;
     @Column (name = "Nome", nullable = false, length = 80)
     protected String nome;
@@ -42,7 +42,14 @@ public class Pessoa implements Serializable
     protected Date dataNascimento;
     @Column (name = "DataDeCadastro", nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
-    protected Date dataCadastro;
+    protected Date dataCadastro; 
+    
+    @Column(name = "Login", length = 20)
+    protected String login;
+    @Column(name = "Senha", length = 10)
+    protected String senha; 
+    @Column(name = "Permissao", length = 30)
+    protected String permissao;
     
     @OneToOne (mappedBy = "pessoa", fetch = FetchType.LAZY)
     @ForeignKey (name = "EnderecoPessoa")
@@ -128,6 +135,30 @@ public class Pessoa implements Serializable
 
     public void setDataCadastro(Date dataCadastro) {
         this.dataCadastro = dataCadastro;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getPermissao() {
+        return permissao;
+    }
+
+    public void setPermissao(String permissao) {
+        this.permissao = permissao;
     }
 
     

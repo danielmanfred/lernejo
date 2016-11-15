@@ -35,7 +35,6 @@
         <mapping class="br.com.lernejo.model.entities.Professor"/>      
         <mapping class="br.com.lernejo.model.entities.Pessoa"/>               
         <mapping class="br.com.lernejo.model.entities.Sexo"/>
-        <mapping class="br.com.lernejo.model.entities.Aluno"/>
     </session-factory>
 </hibernate-configuration>  
     
